@@ -4,6 +4,10 @@
  */
 package Main;
 
+import Controlador.Controlador;
+import Modelo.Modelo;
+import Vista.VistaInscripciones;
+
 /**
  *
  * @author benja
@@ -13,8 +17,13 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        System.out.println("Empezo lo bueno :<");
-    }
-    
+        public static void main(String[] args) {
+                Modelo modelo = new Modelo();
+                Controlador control = new Controlador(modelo);
+                VistaInscripciones vista = new VistaInscripciones(control);
+                modelo.agregarObservador(vista);
+                vista.setVisible(true);
+                control.reiniciar();
+            }
+
 }
