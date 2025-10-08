@@ -12,6 +12,7 @@ import Modelo.IModelo;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -310,7 +311,7 @@ public class VistaInscripciones extends javax.swing.JFrame implements Observador
      * @param tabla La JTable que se va a llenar.
      * @param cursos La lista de CursoDTO con los datos.
      */
-    private void llenarTabla(javax.swing.JTable tabla, List<CursoDTO> cursos) {
+    private void llenarTabla(JTable tabla, List<CursoDTO> cursos) {
         DefaultTableModel tableModel = (DefaultTableModel) tabla.getModel();
         tableModel.setRowCount(0);
 

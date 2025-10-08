@@ -41,7 +41,6 @@ public class Modelo implements IModelo {
      */
     public void inscribirCurso(CursoDTO cursoDto) {
         if (cursoDto == null) {
-            // Ya no se genera un mensaje de error. Simplemente no hace nada.
             return;
         }
         Curso cursoEntidad = encontrarCursoPorNombre(cursoDto.getNombre());
@@ -87,7 +86,6 @@ public class Modelo implements IModelo {
      * Devuelve la última ficha generada y la elimina del estado.
      * @return El DTO de la última ficha de pago.
      */
-    // --- MÉTODOS GETTER (Implementando IModelo y para el "Pizarrón") ---
     @Override
     public FichaPagoDTO getUltimaFichaYLimpiar() {
         FichaPagoDTO ficha = this.ultimaFichaGenerada;
@@ -100,7 +98,7 @@ public class Modelo implements IModelo {
      * @return Lista de DTOs de cursos inscritos.
      */
     @Override
-    public List<CursoDTO> getCursosInscritos() { // Nombre coincide con la interfaz
+    public List<CursoDTO> getCursosInscritos() { 
         List<Curso> entidades = sistemaInscripcion.getCursosInscritos();
         return entidades.stream().map(this::convertirCursoEntidadADTO).collect(Collectors.toList());
     }
@@ -110,7 +108,7 @@ public class Modelo implements IModelo {
      * @return Lista de DTOs de cursos no inscritos.
      */
     @Override
-    public List<CursoDTO> getCursosNoInscritos() { // Nombre coincide con la interfaz
+    public List<CursoDTO> getCursosNoInscritos() {
         List<Curso> entidades = sistemaInscripcion.getCursosNoInscritos();
         return entidades.stream().map(this::convertirCursoEntidadADTO).collect(Collectors.toList());
     }
@@ -141,7 +139,6 @@ public class Modelo implements IModelo {
      * @param nombre El nombre del curso a buscar.
      * @return La entidad Curso encontrada o null.
      */
-    // --- MÉTODOS DE AYUDA PARA TRADUCCIÓN ---
     private Curso encontrarCursoPorNombre(String nombre) {
         // Busca tanto en la lista de inscritos como en la de no inscritos
         return sistemaInscripcion.getCursosNoInscritos().stream()
